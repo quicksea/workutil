@@ -1,0 +1,13 @@
+Package: sxpulti
+Type: Package
+Title: sxp r toolbox
+Version: 0.1
+Date: 2016-09-11
+Author: Lu L. <lu.liu@intel.com>
+Maintainer: Lu L. <lu.liu@intel.com>
+Description: Tools to manipulate and visualize sxp data
+License:
+Depends: R (>= 3.1.0)
+LazyData: TRUE
+RoxygenNote: 5.0.1
+Imports: data.table
