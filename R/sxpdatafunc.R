@@ -40,9 +40,9 @@ interpolatex <-
     return(dtcat);
   }
 
-#'take a data.table, split col into multiple columns based separator, in place change to dt
-#'mode 1: split "X:1_Y:2" into two columns X,Y, fill with 1,2;
-#'mode 0: split "1_2" into 1 and 2, column names defined by splitcolnames if given, otherwise use V1,V2...
+#'take a data.table, split col into multiple columns based separator
+#'
+#'in place change to dt
 #'@param dt a data.table
 #'@param col column to split, no quote
 #'@param sep1 level 1 sep1
@@ -50,6 +50,9 @@ interpolatex <-
 #'@param mode default 1
 #'@param splitcolnames used in mode 0, names of splitted columns
 #'@return no return, inplace change to dt
+#'@examples
+#'mode 1: split "X:1_Y:2" into two columns X,Y, fill with 1,2;
+#'mode 0: split "1_2" into 1 and 2, column names defined by splitcolnames if given, otherwise use V1,V2...
 #'@export
 splitcol <- function(dt, col, sep1 = '_', sep2 = ':', mode = 1, splitcolnames = NULL) {
   grp = deparse(substitute(col))

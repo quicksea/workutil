@@ -2,9 +2,7 @@
 % Please edit documentation in R/sxpdatafunc.R
 \name{splitcol}
 \alias{splitcol}
-\title{take a data.table, split col into multiple columns based separator, in place change to dt
-mode 1: split "X:1_Y:2" into two columns X,Y, fill with 1,2;
-mode 0: split "1_2" into 1 and 2, column names defined by splitcolnames if given, otherwise use V1,V2...}
+\title{take a data.table, split col into multiple columns based separator}
 \usage{
 splitcol(dt, col, sep1 = "_", sep2 = ":", mode = 1,
   splitcolnames = NULL)
@@ -26,7 +24,9 @@ splitcol(dt, col, sep1 = "_", sep2 = ":", mode = 1,
 no return, inplace change to dt
 }
 \description{
-take a data.table, split col into multiple columns based separator, in place change to dt
+in place change to dt
+}
+\examples{
 mode 1: split "X:1_Y:2" into two columns X,Y, fill with 1,2;
 mode 0: split "1_2" into 1 and 2, column names defined by splitcolnames if given, otherwise use V1,V2...
 }
