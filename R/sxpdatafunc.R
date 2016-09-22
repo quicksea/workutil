@@ -20,8 +20,8 @@ interpolatex <-
     }
     for (i in 1:length(target)) {
       tari = target[i];
-      dt[,flag := ifelse((y - tari) <= 0 &
-                              (shift(y,type = 'lead') - tari) > 0, 'lowbound',
+      dt[,flag := ifelse((y - tari) < 0 &
+                              (shift(y,type = 'lead') - tari) >= 0, 'lowbound',
                             ifelse((y - tari) >= 0 &
                                      (shift(y,type = 'lag') - tari) < 0, 'highbound',
                                    'other')
