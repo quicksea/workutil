@@ -44,7 +44,7 @@ interpolatex <-
 #'
 #'in place change to dt
 #'@param dt a data.table
-#'@param col column to split, no quote
+#'@param col column to split, quote
 #'@param sep1 level 1 sep1
 #'@param sep2 level 1 sep2
 #'@param mode default 1
@@ -55,21 +55,20 @@ interpolatex <-
 #'mode 0: split "1_2" into 1 and 2, column names defined by splitcolnames if given, otherwise use V1,V2...
 #'@export
 splitcol <- function(dt, col, sep1 = '_', sep2 = ':', mode = 1, splitcolnames = NULL) {
-  grp = deparse(substitute(col))
   if (mode == 1) {
-    str1 = dt[1,grp];
+    str1 = dt[1,get(col)];
     headerlist = as.list(unlist(strsplit(str1, sep1)));
     namesplit <- function(x, sep) {unlist(strsplit(x,sep))[1]};
     headers = unlist(lapply(headerlist, namesplit, sep2));
-    dt [, headers := tstrsplit(grp, sep1), with=FALSE];
+    dt [, headers := tstrsplit(get(col), sep1), with=FALSE];
     for (header in headers) {
       dt [, eval(header) := tstrsplit(get(header), sep2)[2]]
     }
   } else if (mode == 0) {
-    str1 = dt[1,grp];
+    str1 = dt[1,get(col)];
     headerlist = as.list(unlist(strsplit(str1, sep1)));
     n = length(headerlist)
     if (is.null(splitcolnames)) {splitcolnames=paste0(rep('V', n),1:n)}
-    dt [, splitcolnames := tstrsplit(grp, sep1), with=FALSE];
+    dt [, splitcolnames := tstrsplit(get(col), sep1), with=FALSE];
   }
 }
