@@ -10,7 +10,7 @@ splitcol(dt, col, sep1 = "_", sep2 = ":", mode = 1,
 \arguments{
 \item{dt}{a data.table}
 
-\item{col}{column to split, no quote}
+\item{col}{column to split, quote}
 
 \item{sep1}{level 1 sep1}
 
